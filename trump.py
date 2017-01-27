@@ -2,6 +2,9 @@
 
 from PIL import Image,ImageDraw,ImageFont
 from sys import argv
+import sys
+
+reload(sys)
 
 try:
     language = argv[1]
@@ -15,9 +18,11 @@ except Exception,e:
 if language == '-e':
     # English use this font
     ttfont = ImageFont.truetype('C:\Windows\Fonts\Helvetica Neue.ttf', 16)
+    sys.setdefaultencoding('utf-8')
 elif language == '-c':
     # 中文用这个字体
     ttfont = ImageFont.truetype('C:\Windows\Fonts\msyhl.ttc', 16)
+    sys.setdefaultencoding('gbk')
 else:
     print "参数不正确"
     print "eg. python trump.py -e/-c \"hello world\""
